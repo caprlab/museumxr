@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>A-Frame - Artifact</title>
+		<script src="https://cdn.jsdelivr.net/gh/aframevr/aframe@9d093bbd98ef98fa0ccc7b791a16c066fcafbc29/dist/aframe-master.min.js"></script>
+
+	</head>
+	<body>
+
+		<script>
+			
+		</script>
+		<a-scene>
+			
+			<a-assets>
+				<img id="grid" src="border.png" crossorigin="anonymous" />
+				<img id="sky" src="stars.jpg" crossorigin="anonymous" />
+				<img id="artifact" src="artifact.jpg" crossorigin="anonymous"/>
+
+				<!-- horizontal width and vertical height of the scene that contains the artifact, in meters -->
+				<a-mixin id="dimensions" geometry="width: .406; height: .603;"></a-mixin>
+
+			</a-assets>
+			
+			<!-- setting up scene -->
+			<a-sky 
+				rotation = "0 0 0"
+				color = "#FFFFFF"
+				material = "src: #sky">
+			</a-sky>
+			
+			<a-plane
+				width="100" height="100"
+				position=" 0.00 0.00 0.00" 
+				rotation="-90 0 0" 
+				color="#888888" 
+				material="src: #grid; repeat:100 100; transparent: true; opacity: 0.75"
+				shadow="cast: false; receive: true">
+			</a-plane>
+			
+			<!-- setting up artifact -->
+			<a-plane
+				id = "artifact-border"
+				position = "0 1.6 -.55"
+				color = "#440000"
+				mixin="dimensions"
+				>		
+				
+			</a-plane>
+
+			<a-image  
+				id = "artifact-display"
+				position="0 1.6 -.5"
+				src="#artifact"
+				mixin="dimensions">
+			</a-image>
+			
+		</a-scene>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
