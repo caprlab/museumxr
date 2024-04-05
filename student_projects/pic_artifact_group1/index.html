@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>A-Frame - Artifact</title>
+		<script src="https://aframe.io/releases/1.1.0/aframe.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/aframe-blink-controls/dist/aframe-blink-controls.min.js"></script>
+	</head>
+	<body>
+
+		<script>
+			
+		</script>
+		<a-scene>
+			
+			<a-assets>
+				<img id="grid" src="border.png" crossorigin="anonymous" />
+				<img id="sky" src="stars.jpg" crossorigin="anonymous" />
+				<img id="artifact" src="artifact.jpg" crossorigin="anonymous"/>
+
+				<!-- horizontal width and vertical height of the scene that contains the artifact, in meters -->
+				<a-mixin id="dimensions" geometry="width: .610; height: .254;"></a-mixin>
+
+			</a-assets>
+			
+			
+			<!-- setting up scene -->
+			<a-sky 
+				rotation = "0 0 0"
+				color = "#FFFFFF"
+				material = "src: #sky">
+			</a-sky>
+			
+			<a-plane
+				id="ground"
+				width="100" height="100"
+				position=" 0.00 0.00 0.00" 
+				rotation="-90 0 0" 
+				color="#888888" 
+				material="src: #grid; repeat:100 100; transparent: true; opacity: 0.75"
+				shadow="cast: false; receive: true">
+			</a-plane>
+
+			<a-entity id="player" position="0 1.6 0">
+				<!-- camera -->
+				<a-entity id="camera" camera wasd-controls look-controls></a-entity>
+				<!-- hand controls -->
+				<a-entity id="left-hand" hand-controls="hand: left" blink-controls></a-entity>
+				<a-entity id="right-hand" hand-controls="hand: right"></a-entity>
+			</a-entity>
+			
+			<!-- setting up artifact -->
+			<a-box
+				id = "artifact-border"
+				depth = ".04"
+				position = "0 1.6 -.525"
+				color = "#440000"
+				mixin="dimensions"
+				>		
+				
+			</a-box>
+
+			<a-image  
+				id = "artifact-display"
+				position="0 1.6 -.5"
+				src="#artifact"
+				mixin="dimensions">
+			</a-image>
+			
+		</a-scene>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
